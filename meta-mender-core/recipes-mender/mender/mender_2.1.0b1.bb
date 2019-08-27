@@ -1,5 +1,4 @@
 require mender.inc
-require mender-old-makefile.inc
 
 ################################################################################
 #-------------------------------------------------------------------------------
@@ -9,22 +8,21 @@ require mender-old-makefile.inc
 # - DEFAULT_PREFERENCE
 #-------------------------------------------------------------------------------
 
-SRC_URI = "git://github.com/mendersoftware/mender;protocol=https;branch=1.6.x"
+SRC_URI = "git://github.com/mendersoftware/mender;protocol=https;branch=2.1.x"
 
-# Tag: 1.6.0
-SRCREV = "329eba697b086386f191e11836fc709e821fdb2a"
+# Tag: 2.1.0b1
+SRCREV = "77342fbd78e9dac33aca9a3f49f181a0440b064c"
 
 # Enable this in Betas, not in finals.
 # Downprioritize this recipe in version selections.
-#DEFAULT_PREFERENCE = "-1"
-
-# REMOVE (not just comment) THIS FOR ALL NEW RECIPES!!!
-# It's only here for old versions where we cannot change the source code.
-GOPTESTBUILDFLAGS_append = " -vet=off"
+DEFAULT_PREFERENCE = "-1"
 
 ################################################################################
 
 # DO NOT change the checksum here without make sure that ALL licenses (including
 # dependencies) are included in the LICENSE variable below.
-LIC_FILES_CHKSUM = "file://src/github.com/mendersoftware/mender/LIC_FILES_CHKSUM.sha256;md5=debbe5e440f2e65465e86b25fc7c9fcc"
-LICENSE = "Apache-2.0 & BSD-2-Clause & BSD-3-Clause & MIT & OLDAP-2.8"
+LIC_FILES_CHKSUM = "file://src/github.com/mendersoftware/mender/LIC_FILES_CHKSUM.sha256;md5=ffc66184ec5a0831e6f5d99b88784670"
+LICENSE = "Apache-2.0 & BSD-2-Clause & BSD-3-Clause & ISC & MIT & OLDAP-2.8"
+
+DEPENDS += "xz"
+RDEPENDS_${PN} += "liblzma"
